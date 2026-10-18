@@ -20,9 +20,9 @@
     .wrap{width:min(var(--max),calc(100% - 44px));margin-inline:auto}
     .topbar{position:sticky;top:0;z-index:20;background:rgba(247,246,242,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(23,23,23,.08)}
     .nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .brand{display:flex;align-items:center;gap:10px;font-family:"Space Grotesk",sans-serif;font-weight:700;letter-spacing:-.7px;font-size:20px}
-    .brand-mark{width:36px;height:36px;background:var(--blue);border-radius:11px;display:grid;place-items:center;color:#fff;font-weight:700;font-size:18px;transform:rotate(-5deg)}
-    .brand small{display:block;font:600 9px "DM Sans",sans-serif;letter-spacing:2.5px;color:var(--muted);margin-top:-3px}
+    .brand{display:flex;align-items:center;gap:10px;font-family:"Space Grotesk",sans-serif;font-weight:700;letter-spacing:-.7px;font-size:20px;min-width:0}
+    .brand-logo{display:block;width:150px;height:62px;object-fit:contain;object-position:left center}.footer-top .brand-logo{width:165px;height:68px}.brand-mark{display:none}
+    .brand small{display:none}
     .nav-links{display:flex;align-items:center;gap:30px;font-size:13px;font-weight:600}
     .nav-links a:not(.nav-cta):hover{color:var(--lime)}
     .nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;background:var(--ink);color:white;padding:13px 20px;font-weight:700;font-size:13px;transition:transform .2s,background .2s;cursor:pointer}
@@ -117,7 +117,7 @@
     .whatsapp:hover{transform:translateY(-3px)}
     .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}.reveal.visible{opacity:1;transform:none}
     @media(max-width:900px){.hero-grid{grid-template-columns:1fr 1fr;gap:24px}.hero-art{min-height:400px}.art-frame{height:380px}.nav-links{gap:17px}.cap-grid{gap:35px}.cta-panel{padding:35px;grid-template-columns:1fr}.services-grid{grid-template-columns:1fr 1fr}.service-card:last-child{grid-column:1/-1}}
-    @media(max-width:680px){.wrap{width:min(var(--max),calc(100% - 30px))}.nav{height:68px}.brand{font-size:18px}.menu-btn{display:grid;place-items:center}.nav-links{display:none;position:absolute;top:68px;left:0;right:0;padding:18px 22px 24px;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}.nav-links.open{display:flex}.nav-links a{padding:12px 0}.nav-links .nav-cta{margin-top:10px;text-align:center;padding:13px}.hero{padding:48px 0 32px}.hero-grid{grid-template-columns:1fr}.hero-art{min-height:360px;margin:12px 8px 0}.art-frame{height:355px}.art-orbit{right:-10px;width:82px;height:82px;font-size:27px}.art-sticker{left:-8px}.hero-copy{font-size:15px}.ticker{margin-top:12px}.ticker-track{justify-content:flex-start;animation:marquee 18s linear infinite;width:max-content}.ticker span{margin-right:18px}@keyframes marquee{to{transform:translateX(-35%)}}section{padding:68px 0}.section-head{display:block;margin-bottom:28px}.section-head p{margin-top:16px}.services-grid{grid-template-columns:1fr}.service-card,.service-card:last-child{grid-column:auto;min-height:0}.service-icon{margin-bottom:20px}.cap-grid{grid-template-columns:1fr;gap:28px}.cap-intro{position:static}.cap-row{grid-template-columns:34px 1fr auto;gap:10px;padding:18px 0}.cap-row h3{font-size:17px}.cap-row p{max-width:260px}.work-grid{grid-template-columns:1fr}.work-card{min-height:300px}.process-grid{grid-template-columns:1fr 1fr;gap:25px 18px}.step-no{margin-bottom:14px}.cta-panel{padding:27px 20px;border-radius:23px}.contact-form{grid-template-columns:1fr}.contact-form textarea,.contact-form .full{grid-column:auto}.footer-top,.footer-bottom{align-items:flex-start;flex-direction:column}.footer-links{flex-wrap:wrap}.whatsapp{right:14px;bottom:14px;width:49px;height:49px}}
+    @media(max-width:680px){.wrap{width:min(var(--max),calc(100% - 30px))}.nav{height:68px}.brand{font-size:18px}.brand-logo{width:125px;height:54px}.footer-top .brand-logo{width:145px;height:60px}.menu-btn{display:grid;place-items:center}.nav-links{display:none;position:absolute;top:68px;left:0;right:0;padding:18px 22px 24px;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}.nav-links.open{display:flex}.nav-links a{padding:12px 0}.nav-links .nav-cta{margin-top:10px;text-align:center;padding:13px}.hero{padding:48px 0 32px}.hero-grid{grid-template-columns:1fr}.hero-art{min-height:360px;margin:12px 8px 0}.art-frame{height:355px}.art-orbit{right:-10px;width:82px;height:82px;font-size:27px}.art-sticker{left:-8px}.hero-copy{font-size:15px}.ticker{margin-top:12px}.ticker-track{justify-content:flex-start;animation:marquee 18s linear infinite;width:max-content}.ticker span{margin-right:18px}@keyframes marquee{to{transform:translateX(-35%)}}section{padding:68px 0}.section-head{display:block;margin-bottom:28px}.section-head p{margin-top:16px}.services-grid{grid-template-columns:1fr}.service-card,.service-card:last-child{grid-column:auto;min-height:0}.service-icon{margin-bottom:20px}.cap-grid{grid-template-columns:1fr;gap:28px}.cap-intro{position:static}.cap-row{grid-template-columns:34px 1fr auto;gap:10px;padding:18px 0}.cap-row h3{font-size:17px}.cap-row p{max-width:260px}.work-grid{grid-template-columns:1fr}.work-card{min-height:300px}.process-grid{grid-template-columns:1fr 1fr;gap:25px 18px}.step-no{margin-bottom:14px}.cta-panel{padding:27px 20px;border-radius:23px}.contact-form{grid-template-columns:1fr}.contact-form textarea,.contact-form .full{grid-column:auto}.footer-top,.footer-bottom{align-items:flex-start;flex-direction:column}.footer-links{flex-wrap:wrap}.whatsapp{right:14px;bottom:14px;width:49px;height:49px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 
     .popup-backdrop{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:18px}
@@ -165,12 +165,11 @@
   <header class="topbar">
     <div class="wrap nav">
       <a class="brand" href="#home" aria-label="AmplifyX Media home">
-        <span class="brand-mark">X</span>
-        <span>amplifyx<small>CREATE · AMPLIFY · GROW</small></span>
+        <img class="brand-logo" src="amplifyx-logo.jpeg" alt="AmplifyX Media — Create, Amplify, Grow">
       </a>
       <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
       <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="#services">Services</a><a href="#capabilities">What we do</a><a href="#work">Our work</a><a href="#process">Process</a>
+        <a href="#services">Services</a><a href="#capabilities">What we do</a><a href="https://drive.google.com/drive/folders/1OF2xfllF0KC3uvqVZ3eaja15-YM9sURJ" target="_blank" rel="noopener noreferrer">Our work ↗</a><a href="#process">Process</a>
         <a class="nav-cta" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
@@ -183,7 +182,7 @@
           <div class="eyebrow"><span class="dot"></span> AmplifyX Media · Reel-format videos, made end to end.</div>
           <h1>MAKE SOME NOISE.<br><span class="orange">MAKE IT</span><br>MATTER.</h1>
           <p class="hero-copy">We create scroll-stopping reel-format videos for brands and businesses—from concept and scripting to shooting, editing and final delivery. One team, end-to-end production, content ready for your social channels.</p>
-          <div class="hero-actions"><a class="btn btn-orange" href="#contact">Build something with us <span>↗</span></a><a class="btn btn-light" href="#work">Explore our work <span>↓</span></a></div>
+          <div class="hero-actions"><a class="btn btn-orange" href="#contact">Build something with us <span>↗</span></a><a class="btn btn-light" href="https://drive.google.com/drive/folders/1OF2xfllF0KC3uvqVZ3eaja15-YM9sURJ" target="_blank" rel="noopener noreferrer">Explore our work <span>↗</span></a></div>
           <div class="equipment-sprinkle" aria-label="Production equipment"><span class="equipment-chip"><span class="mini-icon">📹</span> Camera</span><span class="equipment-chip"><span class="mini-icon">🎙</span> Audio</span><span class="equipment-chip"><span class="mini-icon">🎥</span> Gimbal</span><span class="equipment-chip"><span class="mini-icon">💡</span> Lighting</span></div>
           <div class="hero-note"><div class="avatar-stack"><span class="avatar">A</span><span class="avatar">X</span><span class="avatar">M</span></div><span>Strategy-minded. Creator-powered. Production-ready.</span></div>
         </div>
@@ -280,9 +279,9 @@
   <footer>
     <div class="wrap">
       <div class="footer-top">
-        <a class="brand" href="#home"><span class="brand-mark">X</span><span>amplifyx<small>CREATE · AMPLIFY · GROW</small></span></a>
+        <a class="brand" href="#home" aria-label="AmplifyX Media home"><img class="brand-logo" src="amplifyx-logo.jpeg" alt="AmplifyX Media — Create, Amplify, Grow"></a>
         <p class="footer-note">Reel-format videos, made end to end. Reel-format video production, from the first idea to the final edit.</p>
-        <div class="footer-links"><a href="#services">Services</a><a href="#work">Our work</a><a href="#contact">Contact</a><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div>
+        <div class="footer-links"><a href="#services">Services</a><a href="https://drive.google.com/drive/folders/1OF2xfllF0KC3uvqVZ3eaja15-YM9sURJ" target="_blank" rel="noopener noreferrer">Explore our work ↗</a><a href="#contact">Contact</a><a href="https://www.instagram.com/amplify_x_media?obrf=MTltZWs5bHZkbXVtbQ==" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div>
       </div>
       <div class="footer-bottom"><span>© <span id="year"></span> AmplifyX Media. All rights reserved.</span><span>Reel-format videos, made end to end.</span></div>
     </div>
@@ -292,7 +291,7 @@
 
   <script>
     // Before launch: replace this with your WhatsApp number including country code, digits only.
-    const CONFIG = { whatsappNumber: "91REPLACE_WITH_YOUR_NUMBER" };
+    const CONFIG = { whatsappNumber: "918792933877" };
 
     const menuBtn = document.getElementById("menuBtn");
     const navLinks = document.getElementById("navLinks");
@@ -330,7 +329,7 @@
     document.getElementById("popupForm").addEventListener("submit", event => {
       event.preventDefault();
       const number = CONFIG.whatsappNumber.replace(/\D/g, "");
-      if (!number || number.includes("REPLACE") || number.length < 11) {
+      if (!number || number.length < 11) {
         alert("Please add AmplifyX Media's WhatsApp number in the CONFIG section of index.html before using the enquiry form.");
         return;
       }
@@ -361,7 +360,7 @@
     document.getElementById("contactForm").addEventListener("submit", event => {
       event.preventDefault();
       const number = CONFIG.whatsappNumber.replace(/\D/g, "");
-      if (!number || number.includes("REPLACE") || number.length < 11) {
+      if (!number || number.length < 11) {
         alert("Please add AmplifyX Media's WhatsApp number in the CONFIG section of index.html before using the enquiry form.");
         return;
       }
@@ -380,7 +379,7 @@
 
     document.getElementById("whatsappFloat").addEventListener("click", event => {
       const number = CONFIG.whatsappNumber.replace(/\D/g, "");
-      if (number && !number.includes("REPLACE") && number.length >= 11) {
+      if (number && number.length >= 11) {
         event.preventDefault();
         window.open(`https://wa.me/${number}`, "_blank", "noopener,noreferrer");
       }
