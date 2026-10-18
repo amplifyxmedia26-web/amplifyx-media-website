@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f6f2">
+  <meta name="description" content="AmplifyX Media creates high-impact video content, creator campaigns and brand storytelling for businesses.">
+  <title>AmplifyX Media — Make It Matter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--paper:#f7f6f2;--ink:#171717;--muted:#65645f;--orange:#ff5a1f;--blue:#3348e8;--lime:#d9f36a;--line:#deddd6;--white:#fff;--radius:22px;--max:1180px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:88px}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.55}
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    button,a{ -webkit-tap-highlight-color:transparent}
+    .wrap{width:min(var(--max),calc(100% - 44px));margin-inline:auto}
+    .topbar{position:sticky;top:0;z-index:20;background:rgba(247,246,242,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(23,23,23,.08)}
+    .nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:10px;font-family:"Space Grotesk",sans-serif;font-weight:700;letter-spacing:-.7px;font-size:20px}
+    .brand-mark{width:36px;height:36px;background:var(--blue);border-radius:11px;display:grid;place-items:center;color:#fff;font-weight:700;font-size:18px;transform:rotate(-5deg)}
+    .brand small{display:block;font:600 9px "DM Sans",sans-serif;letter-spacing:2.5px;color:var(--muted);margin-top:-3px}
+    .nav-links{display:flex;align-items:center;gap:30px;font-size:13px;font-weight:600}
+    .nav-links a:not(.nav-cta):hover{color:var(--lime)}
+    .nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;background:var(--ink);color:white;padding:13px 20px;font-weight:700;font-size:13px;transition:transform .2s,background .2s;cursor:pointer}
+    .nav-cta:hover,.btn:hover{transform:translateY(-2px);background:var(--orange)}
+    .menu-btn{display:none;border:1px solid var(--line);background:transparent;border-radius:50%;width:42px;height:42px;font-size:22px}
+    .hero{padding:76px 0 58px;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:54px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--muted)}
+    .dot{width:8px;height:8px;background:var(--blue);border-radius:50%;box-shadow:0 0 0 5px rgba(198,255,61,.12)}
+    h1,h2,h3,p{margin-top:0}
+    h1,h2,h3{font-family:"Space Grotesk",sans-serif;letter-spacing:-.055em}
+    h1{font-size:clamp(54px,7.2vw,94px);line-height:.94;margin:22px 0 24px;max-width:700px}
+    h1 .orange{color:var(--lime)}
+    .hero-copy{font-size:17px;color:var(--muted);max-width:500px;line-height:1.75}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .btn-orange{background:var(--orange)}.btn-orange:hover{background:var(--orange)}
+    .btn-light{background:transparent;color:var(--ink);border:1px solid #c9c8c1}.btn-light:hover{color:#fff}
+    .hero-note{display:flex;align-items:center;gap:12px;margin-top:28px;font-size:12px;color:var(--muted)}
+    .avatar-stack{display:flex}.avatar{width:30px;height:30px;border-radius:50%;border:2px solid var(--paper);margin-left:-7px;background:#e6b28e;display:grid;place-items:center;font-size:11px}.avatar:first-child{margin-left:0;background:#c3d0fb}.avatar:nth-child(2){background:#e6b28e}.avatar:nth-child(3){background:#d9e8a5}
+    .hero-art{position:relative;min-height:490px;display:grid;place-items:center}
+    .art-frame{width:min(100%,480px);height:445px;border-radius:32px;overflow:hidden;position:relative;background:#e7d9ca}
+    .art-frame img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.9)}
+    .art-frame:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(15,15,15,.35))}
+    .art-sticker{position:absolute;z-index:2;top:24px;left:-12px;background:var(--lime);padding:13px 17px;border-radius:12px;font:700 12px "Space Grotesk",sans-serif;transform:rotate(-7deg);box-shadow:0 12px 30px #0001}
+    .art-label{position:absolute;z-index:2;bottom:22px;left:24px;color:white}
+    .art-label strong{font:700 23px "Space Grotesk",sans-serif;display:block;letter-spacing:-1px}
+    .art-label span{font-size:12px;color:#ffffffc9}
+    .art-orbit{position:absolute;width:106px;height:106px;border:1px solid var(--orange);border-radius:50%;right:-15px;top:15px;display:grid;place-items:center;color:var(--lime);font-size:34px;transform:rotate(15deg)}
+    .art-orbit:before{content:"";position:absolute;inset:10px;border:1px dashed var(--orange);border-radius:50%}
+    .ticker{background:var(--orange);color:white;overflow:hidden;transform:rotate(-1deg) scale(1.02);padding:13px 0;margin:10px 0 0}
+    .ticker-track{display:flex;justify-content:space-around;gap:32px;white-space:nowrap;font:700 14px "Space Grotesk",sans-serif;letter-spacing:1px;text-transform:uppercase}
+    .ticker span{display:inline-flex;align-items:center;gap:22px}.ticker b{font-size:18px;color:var(--lime)}
+    section{padding:100px 0}
+    .section-head{display:flex;justify-content:space-between;gap:35px;align-items:end;margin-bottom:40px}
+    .section-kicker{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--orange);font-weight:700;margin-bottom:12px}
+    h2{font-size:clamp(36px,5vw,58px);line-height:1.02;margin-bottom:0;max-width:700px}
+    .section-head p{max-width:390px;color:var(--muted);font-size:14px;margin-bottom:3px}
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .service-card{padding:27px;border:1px solid var(--line);border-radius:var(--radius);min-height:260px;background:rgba(255,255,255,.42);transition:transform .2s,border-color .2s}
+    .service-card:hover{transform:translateY(-5px);border-color:var(--orange)}
+    .service-icon{width:45px;height:45px;border-radius:14px;background:var(--lime);display:grid;place-items:center;font-size:21px;margin-bottom:30px}
+    .service-card:nth-child(2) .service-icon{background:#dce1ff}.service-card:nth-child(3) .service-icon{background:#ffd9ca}
+    .service-card h3{font-size:24px;margin-bottom:10px;letter-spacing:-1px}
+    .service-card p{font-size:13px;color:var(--muted);margin-bottom:20px}
+    .tag{display:inline-block;border:1px solid var(--line);border-radius:100px;padding:6px 10px;font-size:10px;font-weight:700;color:#555}
+    .capabilities{background:#191919;color:white}
+    .capabilities .section-kicker{color:var(--lime)}
+    .capabilities .section-head p{color:#b9b9b5}
+    .cap-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:start}
+    .cap-intro{position:sticky;top:115px}
+    .cap-intro h2{margin-bottom:22px}
+    .cap-intro p{color:#b9b9b5;font-size:14px;max-width:370px}
+    .cap-list{border-top:1px solid #393939}
+    .cap-row{display:grid;grid-template-columns:52px 1fr auto;align-items:center;gap:16px;padding:23px 0;border-bottom:1px solid #393939}
+    .cap-num{font:600 12px "Space Grotesk",sans-serif;color:var(--lime)}
+    .cap-row h3{font-size:20px;margin:0;letter-spacing:-.7px}
+    .cap-row p{font-size:12px;color:#b9b9b5;margin:5px 0 0}
+    .cap-arrow{color:var(--lime);font-size:22px}
+    .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .work-card{border-radius:24px;overflow:hidden;position:relative;min-height:330px;background:#ddd}
+    .work-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+    .work-card:hover img{transform:scale(1.05)}
+    .work-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 28%,rgba(0,0,0,.72))}
+    .work-info{position:absolute;z-index:1;left:24px;right:24px;bottom:22px;color:white;display:flex;justify-content:space-between;gap:16px;align-items:end}
+    .work-info h3{font-size:25px;margin:8px 0 0}
+    .work-info p{font-size:12px;color:#ffffffc7;margin:0}
+    .work-type{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;color:var(--lime)}
+    .work-plus{border:1px solid #ffffff70;width:40px;height:40px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;font-size:21px}
+    .work-disclaimer{font-size:11px;color:var(--muted);margin-top:15px}
+    .process{background:#e9e8e1}
+    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .process-step{border-top:2px solid var(--ink);padding:20px 12px 0 0}
+    .step-no{font:700 12px "Space Grotesk",sans-serif;color:var(--lime);margin-bottom:25px}
+    .process-step h3{font-size:20px;margin-bottom:8px}
+    .process-step p{font-size:12px;color:var(--muted)}
+    .cta-panel{background:var(--lime);border-radius:30px;padding:50px;display:grid;grid-template-columns:1.1fr .9fr;gap:35px;align-items:center}
+    .cta-panel h2{font-size:clamp(36px,4.5vw,56px);margin-bottom:15px}
+    .cta-panel p{color:#46483b;font-size:14px;max-width:470px;margin-bottom:0}
+    .contact-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .contact-form input,.contact-form select,.contact-form textarea{width:100%;border:1px solid #7770e8;background:#f8f9e9;border-radius:12px;padding:13px 14px;outline:none;color:var(--ink);font-size:13px}
+    .contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{border-color:var(--ink);box-shadow:0 0 0 3px #1717170c}
+    .contact-form textarea{grid-column:1/-1;resize:vertical;min-height:85px}
+    .contact-form .full{grid-column:1/-1}
+    .contact-form .btn{width:100%;background:var(--orange)}
+    .contact-form .btn:hover{background:var(--orange)}
+    footer{padding:45px 0 25px}
+    .footer-top{display:flex;justify-content:space-between;gap:25px;align-items:center;padding-bottom:30px;border-bottom:1px solid var(--line)}
+    .footer-note{font-size:12px;color:var(--muted);max-width:330px}
+    .footer-links{display:flex;gap:20px;font-size:12px;font-weight:600}
+    .footer-bottom{display:flex;justify-content:space-between;gap:20px;padding-top:20px;font-size:11px;color:var(--muted)}
+    .whatsapp{position:fixed;right:20px;bottom:20px;z-index:30;width:54px;height:54px;border-radius:50%;background:#20b967;color:#fff;display:grid;place-items:center;box-shadow:0 8px 28px #0002;font-size:23px;border:3px solid var(--paper);transition:transform .2s}
+    .whatsapp:hover{transform:translateY(-3px)}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}.reveal.visible{opacity:1;transform:none}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr 1fr;gap:24px}.hero-art{min-height:400px}.art-frame{height:380px}.nav-links{gap:17px}.cap-grid{gap:35px}.cta-panel{padding:35px;grid-template-columns:1fr}.services-grid{grid-template-columns:1fr 1fr}.service-card:last-child{grid-column:1/-1}}
+    @media(max-width:680px){.wrap{width:min(var(--max),calc(100% - 30px))}.nav{height:68px}.brand{font-size:18px}.menu-btn{display:grid;place-items:center}.nav-links{display:none;position:absolute;top:68px;left:0;right:0;padding:18px 22px 24px;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}.nav-links.open{display:flex}.nav-links a{padding:12px 0}.nav-links .nav-cta{margin-top:10px;text-align:center;padding:13px}.hero{padding:48px 0 32px}.hero-grid{grid-template-columns:1fr}.hero-art{min-height:360px;margin:12px 8px 0}.art-frame{height:355px}.art-orbit{right:-10px;width:82px;height:82px;font-size:27px}.art-sticker{left:-8px}.hero-copy{font-size:15px}.ticker{margin-top:12px}.ticker-track{justify-content:flex-start;animation:marquee 18s linear infinite;width:max-content}.ticker span{margin-right:18px}@keyframes marquee{to{transform:translateX(-35%)}}section{padding:68px 0}.section-head{display:block;margin-bottom:28px}.section-head p{margin-top:16px}.services-grid{grid-template-columns:1fr}.service-card,.service-card:last-child{grid-column:auto;min-height:0}.service-icon{margin-bottom:20px}.cap-grid{grid-template-columns:1fr;gap:28px}.cap-intro{position:static}.cap-row{grid-template-columns:34px 1fr auto;gap:10px;padding:18px 0}.cap-row h3{font-size:17px}.cap-row p{max-width:260px}.work-grid{grid-template-columns:1fr}.work-card{min-height:300px}.process-grid{grid-template-columns:1fr 1fr;gap:25px 18px}.step-no{margin-bottom:14px}.cta-panel{padding:27px 20px;border-radius:23px}.contact-form{grid-template-columns:1fr}.contact-form textarea,.contact-form .full{grid-column:auto}.footer-top,.footer-bottom{align-items:flex-start;flex-direction:column}.footer-links{flex-wrap:wrap}.whatsapp{right:14px;bottom:14px;width:49px;height:49px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+    .popup-backdrop{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:18px}
+    .popup-backdrop.show{display:flex;animation:fadeIn .22s ease}
+    .popup{position:relative;width:min(480px,100%);background:#f7f6f2;color:#171717;border-radius:26px;padding:32px;box-shadow:0 25px 90px #0008;overflow:hidden}
+    .popup:before{content:"";position:absolute;width:180px;height:180px;background:#c3d0fb;border-radius:50%;right:-80px;top:-90px}
+    .popup-close{position:absolute;z-index:2;right:14px;top:14px;border:0;border-radius:50%;width:36px;height:36px;background:#e9e8e1;font-size:23px;cursor:pointer}
+    .popup-kicker{position:relative;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:800;color:#ff5a1f}
+    .popup h2{position:relative;font-size:clamp(32px,8vw,44px);line-height:.98;margin:16px 0 12px;letter-spacing:-.06em}
+    .popup p{position:relative;color:#5e5d65;font-size:13px;margin-bottom:20px}
+    .popup-form{position:relative;display:grid;gap:10px}
+    .popup-form input,.popup-form select{width:100%;padding:13px 14px;border:1px solid #d6d5cf;border-radius:12px;background:white;color:#101014;outline:none}
+    .popup-form input:focus,.popup-form select:focus{border-color:#ff5a1f;box-shadow:0 0 0 3px #ff5a1f18}
+    .popup-form button{background:#e6b28e;color:white;border:0;border-radius:12px;padding:14px;font-weight:800;cursor:pointer}
+    .popup-footnote{font-size:10px;color:#777!important;margin:12px 0 0!important}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+
+    .gear-badge{position:absolute;z-index:4;display:flex;align-items:center;gap:10px;padding:12px 15px;border:1px solid rgba(23,23,23,.1);border-radius:16px;background:#fffdf8;box-shadow:0 12px 32px #17171718;color:#171717;font-size:11px;font-weight:700;letter-spacing:.3px}
+    .gear-badge .gear-icon{width:35px;height:35px;display:grid;place-items:center;border-radius:11px;background:#171717;color:#d9f36a;font-size:20px}
+    .gear-badge small{display:block;color:#77756e;font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+    .gear-camera{right:-18px;top:88px;transform:rotate(5deg)}
+    .gear-mic{left:-24px;bottom:92px;transform:rotate(-5deg)}
+    .gear-gimbal{right:18px;bottom:14px;transform:rotate(3deg)}
+    .hero-art:before{content:"REC ●";position:absolute;z-index:3;left:18px;top:44px;color:#fff;font:700 11px "Space Grotesk",sans-serif;letter-spacing:2px;text-shadow:0 2px 8px #0008}
+    .hero-art:after{content:"";position:absolute;z-index:3;left:10px;top:36px;width:9px;height:9px;border-radius:50%;background:#ff5a1f;box-shadow:0 0 0 5px #ff5a1f30}
+    .gear-label{font:700 10px "Space Grotesk",sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:18px}
+    @media(max-width:680px){.gear-camera{right:-8px;top:65px}.gear-mic{left:-8px;bottom:76px}.gear-gimbal{right:0;bottom:0}.gear-badge{padding:8px 10px;font-size:10px}.gear-badge .gear-icon{width:29px;height:29px;font-size:17px}.hero-art:before{left:14px;top:34px}.hero-art:after{left:7px;top:27px}}
+
+
+    .equipment-sprinkle{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:24px}
+    .equipment-chip{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:7px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.58);color:var(--muted);font-size:10px;font-weight:700;letter-spacing:.2px}
+    .equipment-chip .mini-icon{font-size:14px;line-height:1}
+    .equipment-inline{display:inline-flex;align-items:center;gap:7px;color:var(--muted);font-size:11px;font-weight:600}
+    .equipment-inline .mini-icon{color:var(--orange);font-size:16px}
+    .service-icon{position:relative}
+    .equipment-watermark{position:absolute;right:20px;top:18px;display:flex;gap:8px;opacity:.8;font-size:17px;pointer-events:none}
+    .equipment-watermark span{display:grid;place-items:center;width:31px;height:31px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.65)}
+    .cap-intro .equipment-sprinkle{margin:20px 0 25px}
+    @media(max-width:680px){.equipment-sprinkle{gap:7px}.equipment-chip{padding:6px 8px;font-size:9px}.equipment-watermark{right:12px;top:12px}}
+
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="AmplifyX Media home">
+        <span class="brand-mark">X</span>
+        <span>amplifyx<small>CREATE · AMPLIFY · GROW</small></span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#services">Services</a><a href="#capabilities">What we do</a><a href="#work">Our work</a><a href="#process">Process</a>
+        <a class="nav-cta" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow"><span class="dot"></span> AmplifyX Media · Reel-format videos, made end to end.</div>
+          <h1>MAKE SOME NOISE.<br><span class="orange">MAKE IT</span><br>MATTER.</h1>
+          <p class="hero-copy">We create scroll-stopping reel-format videos for brands and businesses—from concept and scripting to shooting, editing and final delivery. One team, end-to-end production, content ready for your social channels.</p>
+          <div class="hero-actions"><a class="btn btn-orange" href="#contact">Build something with us <span>↗</span></a><a class="btn btn-light" href="#work">Explore our work <span>↓</span></a></div>
+          <div class="equipment-sprinkle" aria-label="Production equipment"><span class="equipment-chip"><span class="mini-icon">📹</span> Camera</span><span class="equipment-chip"><span class="mini-icon">🎙</span> Audio</span><span class="equipment-chip"><span class="mini-icon">🎥</span> Gimbal</span><span class="equipment-chip"><span class="mini-icon">💡</span> Lighting</span></div>
+          <div class="hero-note"><div class="avatar-stack"><span class="avatar">A</span><span class="avatar">X</span><span class="avatar">M</span></div><span>Strategy-minded. Creator-powered. Production-ready.</span></div>
+        </div>
+        <div class="hero-art">
+          <div class="art-sticker">IDEAS → IMPACT</div>
+          <div class="art-frame"><img src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?auto=format&fit=crop&w=1100&q=85" alt="Video camera ready for a production shoot" fetchpriority="high"><div class="art-label"><strong>Ready. Set. Create.</strong><span>From first frame to final cut.</span></div></div>
+          <div class="art-orbit" aria-hidden="true">✳</div>
+          <div class="gear-badge gear-camera"><span class="gear-icon">📹</span><span>Camera-ready<small>Professional shoots</small></span></div>
+          <div class="gear-badge gear-mic"><span class="gear-icon">🎙</span><span>Sound on<small>Clear storytelling</small></span></div>
+          <div class="gear-badge gear-gimbal"><span class="gear-icon">🎥</span><span>Move with purpose<small>Reels & video</small></span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-label="Our services">
+      <div class="ticker-track"><span>CONTENT THAT CONNECTS <b>✳</b></span><span>CREATORS WITH PURPOSE <b>✳</b></span><span>PRODUCTION THAT DELIVERS <b>✳</b></span><span>CONTENT THAT CONNECTS <b>✳</b></span><span>CREATORS WITH PURPOSE <b>✳</b></span></div>
+    </div>
+
+    <section id="services">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="section-kicker">01 / What we offer</div><h2>Reel videos.<br>Handled end to end.</h2><div class="equipment-inline"><span class="mini-icon">🎬</span> Concept <span>·</span><span class="mini-icon">🎥</span> Production <span>·</span><span class="mini-icon">✂️</span> Editing</div></div><p>We handle the complete reel production process: ideas, scripts, creators, shoot coordination, editing and delivery—so your brand gets ready-to-post videos without juggling multiple vendors.</p></div>
+        <div class="services-grid">
+          <article class="service-card reveal"><div class="service-icon">▶</div><h3>Reel Video Production</h3><p>End-to-end reel-format videos—from concepts and scripts to shooting, editing and final delivery, ready for Instagram and other social platforms.</p><span class="tag">IDEA · SCRIPT · SHOOT · EDIT</span></article>
+          <article class="service-card reveal"><div class="service-icon">✳</div><h3>Creator Campaigns</h3><p>Connect your brand with relevant creators and authentic voices to tell stories people trust.</p><span class="tag">UGC · INFLUENCERS</span></article>
+          <article class="service-card reveal"><div class="service-icon">▧</div><h3>Brand Content</h3><p>Product showcases, business stories and social-first creative that makes your offering easier to understand.</p><span class="tag">PRODUCT · BRAND · SOCIAL</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="capabilities" id="capabilities">
+      <div class="wrap cap-grid">
+        <div class="cap-intro reveal"><div class="section-kicker">02 / Built to create</div><h2>More than a camera and a good idea.</h2><p>From the first idea to the final export, we coordinate the complete reel production workflow—creative planning, talent, filming, editing and delivery.</p>
+          <div class="equipment-sprinkle"><span class="equipment-chip"><span class="mini-icon">📷</span> Camera rigs</span><span class="equipment-chip"><span class="mini-icon">🎤</span> Mics</span><span class="equipment-chip"><span class="mini-icon">🦾</span> Stabilizers</span></div><a class="btn btn-orange" href="#contact">Tell us your brief ↗</a></div>
+        <div class="cap-list">
+          <div class="cap-row reveal"><span class="cap-num">01</span><div><h3>End-to-end production</h3><p>Creative planning, scripting, shoot coordination, editing and delivery.</p></div><span class="cap-arrow">↗</span></div>
+          <div class="cap-row reveal"><span class="cap-num">02</span><div><h3>Studio & on-location shoots</h3><p>Flexible production setups for interviews, products, campaigns and more.</p></div><span class="cap-arrow">↗</span></div>
+          <div class="cap-row reveal"><span class="cap-num">03</span><div><h3>Creator & model network</h3><p>Find the right faces and voices for your brand and audience.</p></div><span class="cap-arrow">↗</span></div>
+          <div class="cap-row reveal"><span class="cap-num">04</span><div><h3>Reel-first content</h3><p>Short, engaging videos planned for social media, with hooks, pacing and edits designed for vertical viewing.</p></div><span class="cap-arrow">↗</span></div>
+          <div class="cap-row reveal"><span class="cap-num">05</span><div><h3>Content repurposing</h3><p>Turn long-form footage into social-ready clips and cutdowns.</p></div><span class="cap-arrow">↗</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="section-kicker">04 / A simple process</div><h2>Clear plan. Smooth shoot.<br>Strong finish.</h2></div><p>Great work happens when everyone knows what we're making, why we're making it and what happens next.</p></div>
+        <div class="process-grid">
+          <article class="process-step reveal"><div class="step-no">STEP 01</div><h3>Tell us the goal</h3><p>Share your brand, audience, deliverables and what success looks like.</p></article>
+          <article class="process-step reveal"><div class="step-no">STEP 02</div><h3>Shape the idea</h3><p>We align on concepts, format, schedule, scope and budget.</p></article>
+          <article class="process-step reveal"><div class="step-no">STEP 03</div><h3>Make it happen</h3><p>Our team coordinates the shoot, creators and production details.</p></article>
+          <article class="process-step reveal"><div class="step-no">STEP 04</div><h3>Deliver & deploy</h3><p>Receive polished assets ready for your chosen channels.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="cta-panel reveal">
+          <div><div class="section-kicker">05 / Your turn</div><h2>Have a brief?<br>Let's make it happen.</h2><p>Tell us a little about your project. We'll open WhatsApp with your details ready to send, so the conversation can start quickly.</p></div>
+          <form class="contact-form" id="contactForm">
+            <input name="name" placeholder="Your name" aria-label="Your name" required>
+            <input name="company" placeholder="Company / brand" aria-label="Company or brand">
+            <input name="phone" type="tel" placeholder="Phone number" aria-label="Phone number">
+            <select name="service" aria-label="Service you're interested in" required><option value="" disabled selected>Choose a service</option><option>Video production</option><option>Creator / influencer campaign</option><option>UGC content</option><option>Product shoot</option><option>Long-form video / podcast</option><option>Other / not sure yet</option></select>
+            <textarea name="message" placeholder="What are you looking to create?" aria-label="Project details"></textarea>
+            <button class="btn full" type="submit">Send enquiry on WhatsApp <span>↗</span></button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <div class="popup-backdrop" id="leadPopup" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+    <div class="popup">
+      <button class="popup-close" id="popupClose" aria-label="Close enquiry form">×</button>
+      <div class="popup-kicker">Let's create something</div>
+      <h2 id="popupTitle">Your next reel starts here.</h2>
+      <p>Need reel-format videos for your brand? Share your name and phone number, and tell us what you have in mind.</p>
+      <form class="popup-form" id="popupForm">
+        <input name="popupName" placeholder="Your name" aria-label="Your name" required>
+        <input name="popupCompany" placeholder="Brand / company name" aria-label="Brand or company name">
+        <input name="popupPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Your phone number" aria-label="Your phone number" required pattern="[0-9+()\s-]{7,20}" title="Enter a valid phone number">
+        <select name="popupService" aria-label="Choose a service" required>
+          <option value="" disabled selected>What do you need?</option>
+          <option>Monthly reel production</option><option>UGC / creator videos</option><option>Product shoot</option><option>Long-form video</option><option>Not sure yet</option>
+        </select>
+        <button type="submit">Enquire on WhatsApp ↗</button>
+      </form>
+      <p class="popup-footnote">No commitment. Just tell us about your project.</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-top">
+        <a class="brand" href="#home"><span class="brand-mark">X</span><span>amplifyx<small>CREATE · AMPLIFY · GROW</small></span></a>
+        <p class="footer-note">Reel-format videos, made end to end. Reel-format video production, from the first idea to the final edit.</p>
+        <div class="footer-links"><a href="#services">Services</a><a href="#work">Our work</a><a href="#contact">Contact</a><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year"></span> AmplifyX Media. All rights reserved.</span><span>Reel-format videos, made end to end.</span></div>
+    </div>
+  </footer>
+
+  <a class="whatsapp" id="whatsappFloat" href="#contact" aria-label="Contact AmplifyX Media on WhatsApp" title="Chat on WhatsApp">✆</a>
+
+  <script>
+    // Before launch: replace this with your WhatsApp number including country code, digits only.
+    const CONFIG = { whatsappNumber: "91REPLACE_WITH_YOUR_NUMBER" };
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+    menuBtn.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+      menuBtn.textContent = isOpen ? "×" : "☰";
+    });
+    navLinks.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+      menuBtn.textContent = "☰";
+    }));
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Lead popup: first display after 5 seconds, then every 20 seconds.
+    // Visitors can close it; it will be shown again on the next interval.
+    const leadPopup = document.getElementById("leadPopup");
+    const popupClose = document.getElementById("popupClose");
+    let popupTimer = null;
+    function showLeadPopup() {
+      if (!leadPopup.classList.contains("show")) leadPopup.classList.add("show");
+    }
+    function hideLeadPopup() {
+      leadPopup.classList.remove("show");
+    }
+    popupClose.addEventListener("click", hideLeadPopup);
+    leadPopup.addEventListener("click", e => { if (e.target === leadPopup) hideLeadPopup(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") hideLeadPopup(); });
+    popupTimer = setTimeout(() => {
+      showLeadPopup();
+      setInterval(showLeadPopup, 20000);
+    }, 5000);
+
+    document.getElementById("popupForm").addEventListener("submit", event => {
+      event.preventDefault();
+      const number = CONFIG.whatsappNumber.replace(/\D/g, "");
+      if (!number || number.includes("REPLACE") || number.length < 11) {
+        alert("Please add AmplifyX Media's WhatsApp number in the CONFIG section of index.html before using the enquiry form.");
+        return;
+      }
+      const data = new FormData(event.currentTarget);
+      const message = [
+        "Hello AmplifyX Media! I'd like to enquire about reel/video production.",
+        "",
+        `Name: ${data.get("popupName") || "-"}`,
+        `Brand / Company: ${data.get("popupCompany") || "-"}`,
+        `Phone: ${data.get("popupPhone") || "-"}`,
+        `Service: ${data.get("popupService") || "-"}`
+      ].join("\n");
+      window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+      hideLeadPopup();
+    });
+
+
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold: .12});
+    document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
+    document.getElementById("contactForm").addEventListener("submit", event => {
+      event.preventDefault();
+      const number = CONFIG.whatsappNumber.replace(/\D/g, "");
+      if (!number || number.includes("REPLACE") || number.length < 11) {
+        alert("Please add AmplifyX Media's WhatsApp number in the CONFIG section of index.html before using the enquiry form.");
+        return;
+      }
+      const data = new FormData(event.currentTarget);
+      const message = [
+        "Hello AmplifyX Media! I'd like to enquire about a project.",
+        "",
+        `Name: ${data.get("name") || "-"}`,
+        `Company / Brand: ${data.get("company") || "-"}`,
+        `Phone: ${data.get("phone") || "-"}`,
+        `Service: ${data.get("service") || "-"}`,
+        `Project details: ${data.get("message") || "-"}`
+      ].join("\n");
+      window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    });
+
+    document.getElementById("whatsappFloat").addEventListener("click", event => {
+      const number = CONFIG.whatsappNumber.replace(/\D/g, "");
+      if (number && !number.includes("REPLACE") && number.length >= 11) {
+        event.preventDefault();
+        window.open(`https://wa.me/${number}`, "_blank", "noopener,noreferrer");
+      }
+    });
+  </script>
+</body>
+</html>
