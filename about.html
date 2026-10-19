@@ -74,8 +74,10 @@
     .founder-card{display:grid;grid-template-columns:.8fr 1.2fr;background:var(--paper);border:1px solid #1717170d;border-radius:25px;overflow:hidden;min-height:340px;transition:transform .2s,box-shadow .2s}
     .founder-card:hover{transform:translateY(-4px);box-shadow:0 18px 38px #1717170b}
     .photo-placeholder{min-height:100%;background:#deddd6;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
-    .photo-placeholder:before,.photo-placeholder:after{content:"";position:absolute;border:1px solid #17171716;border-radius:50%;width:220px;height:220px}
-    .photo-placeholder:after{width:155px;height:155px;border-style:dashed}
+    .photo-placeholder .initials,
+.photo-placeholder .photo-hint {
+  display: none !important;
+}
     .photo-placeholder .initials{position:relative;z-index:1;width:84px;height:84px;display:grid;place-items:center;background:var(--lime);border-radius:24px;font:700 27px "Space Grotesk",sans-serif;transform:rotate(-5deg)}
     .founder-card:nth-child(2) .photo-placeholder{background:#dce1ff}
     .founder-card:nth-child(2) .initials{background:#ffd9ca}
