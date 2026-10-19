@@ -21,7 +21,7 @@
     .topbar{position:sticky;top:0;z-index:20;background:rgba(247,246,242,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(23,23,23,.08)}
     .nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
     .brand{display:flex;align-items:center;gap:10px;font-family:"Space Grotesk",sans-serif;font-weight:700;letter-spacing:-.7px;font-size:20px;min-width:0}
-    .brand-logo{display:block;width:54px;height:54px;object-fit:cover;object-position:center;border-radius:14px;background:#fff;border:1px solid rgba(23,23,23,.08);box-shadow:0 3px 12px #17171712}.footer-top .brand-logo{width:60px;height:60px}.brand-mark{display:none}
+    .brand-logo{display:block;width:54px;height:54px;flex-shrink:0;object-fit:cover;object-position:center;border-radius:14px;background:#fff;border:1px solid rgba(23,23,23,.08);box-shadow:0 3px 12px #17171712}.footer-top .brand-logo{width:60px;height:60px}.brand-copy{display:flex;flex-direction:column;gap:1px}.brand-name{font-size:20px;line-height:1.15}.brand-tagline{font-family:"DM Sans",sans-serif;font-size:9px;line-height:1.4;font-weight:700;letter-spacing:1.25px;color:var(--muted);white-space:nowrap}.brand-mark{display:none}
     .brand small{display:none}
     .nav-links{display:flex;align-items:center;gap:30px;font-size:13px;font-weight:600}
     .nav-links a:not(.nav-cta):hover{color:var(--lime)}
@@ -117,7 +117,7 @@
     .whatsapp:hover{transform:translateY(-3px)}
     .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}.reveal.visible{opacity:1;transform:none}
     @media(max-width:900px){.hero-grid{grid-template-columns:1fr 1fr;gap:24px}.hero-art{min-height:400px}.art-frame{height:380px}.nav-links{gap:17px}.cap-grid{gap:35px}.cta-panel{padding:35px;grid-template-columns:1fr}.services-grid{grid-template-columns:1fr 1fr}.service-card:last-child{grid-column:1/-1}}
-    @media(max-width:680px){.wrap{width:min(var(--max),calc(100% - 30px))}.nav{height:68px}.brand{font-size:18px}.brand-logo{width:48px;height:48px;border-radius:13px}.footer-top .brand-logo{width:54px;height:54px}.menu-btn{display:grid;place-items:center}.nav-links{display:none;position:absolute;top:68px;left:0;right:0;padding:18px 22px 24px;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}.nav-links.open{display:flex}.nav-links a{padding:12px 0}.nav-links .nav-cta{margin-top:10px;text-align:center;padding:13px}.hero{padding:48px 0 32px}.hero-grid{grid-template-columns:1fr}.hero-art{min-height:360px;margin:12px 8px 0}.art-frame{height:355px}.art-orbit{right:-10px;width:82px;height:82px;font-size:27px}.art-sticker{left:-8px}.hero-copy{font-size:15px}.ticker{margin-top:12px}.ticker-track{justify-content:flex-start;animation:marquee 18s linear infinite;width:max-content}.ticker span{margin-right:18px}@keyframes marquee{to{transform:translateX(-35%)}}section{padding:68px 0}.section-head{display:block;margin-bottom:28px}.section-head p{margin-top:16px}.services-grid{grid-template-columns:1fr}.service-card,.service-card:last-child{grid-column:auto;min-height:0}.service-icon{margin-bottom:20px}.cap-grid{grid-template-columns:1fr;gap:28px}.cap-intro{position:static}.cap-row{grid-template-columns:34px 1fr auto;gap:10px;padding:18px 0}.cap-row h3{font-size:17px}.cap-row p{max-width:260px}.work-grid{grid-template-columns:1fr}.work-card{min-height:300px}.process-grid{grid-template-columns:1fr 1fr;gap:25px 18px}.step-no{margin-bottom:14px}.cta-panel{padding:27px 20px;border-radius:23px}.contact-form{grid-template-columns:1fr}.contact-form textarea,.contact-form .full{grid-column:auto}.footer-top,.footer-bottom{align-items:flex-start;flex-direction:column}.footer-links{flex-wrap:wrap}.whatsapp{right:14px;bottom:14px;width:49px;height:49px}}
+    @media(max-width:680px){.wrap{width:min(var(--max),calc(100% - 30px))}.nav{height:68px}.brand{font-size:18px;gap:9px}.brand-logo{width:48px;height:48px;border-radius:13px}.brand-name{font-size:18px}.brand-tagline{font-size:7px;letter-spacing:1px}.footer-top .brand-logo{width:54px;height:54px}.menu-btn{display:grid;place-items:center}.nav-links{display:none;position:absolute;top:68px;left:0;right:0;padding:18px 22px 24px;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}.nav-links.open{display:flex}.nav-links a{padding:12px 0}.nav-links .nav-cta{margin-top:10px;text-align:center;padding:13px}.hero{padding:48px 0 32px}.hero-grid{grid-template-columns:1fr}.hero-art{min-height:360px;margin:12px 8px 0}.art-frame{height:355px}.art-orbit{right:-10px;width:82px;height:82px;font-size:27px}.art-sticker{left:-8px}.hero-copy{font-size:15px}.ticker{margin-top:12px}.ticker-track{justify-content:flex-start;animation:marquee 18s linear infinite;width:max-content}.ticker span{margin-right:18px}@keyframes marquee{to{transform:translateX(-35%)}}section{padding:68px 0}.section-head{display:block;margin-bottom:28px}.section-head p{margin-top:16px}.services-grid{grid-template-columns:1fr}.service-card,.service-card:last-child{grid-column:auto;min-height:0}.service-icon{margin-bottom:20px}.cap-grid{grid-template-columns:1fr;gap:28px}.cap-intro{position:static}.cap-row{grid-template-columns:34px 1fr auto;gap:10px;padding:18px 0}.cap-row h3{font-size:17px}.cap-row p{max-width:260px}.work-grid{grid-template-columns:1fr}.work-card{min-height:300px}.process-grid{grid-template-columns:1fr 1fr;gap:25px 18px}.step-no{margin-bottom:14px}.cta-panel{padding:27px 20px;border-radius:23px}.contact-form{grid-template-columns:1fr}.contact-form textarea,.contact-form .full{grid-column:auto}.footer-top,.footer-bottom{align-items:flex-start;flex-direction:column}.footer-links{flex-wrap:wrap}.whatsapp{right:14px;bottom:14px;width:49px;height:49px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 
 
@@ -144,17 +144,30 @@
     .cap-intro .equipment-sprinkle{margin:20px 0 25px}
     @media(max-width:680px){.equipment-sprinkle{gap:7px}.equipment-chip{padding:6px 8px;font-size:9px}.equipment-watermark{right:12px;top:12px}}
 
+
+    .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+    .story-copy{max-width:590px}
+    .story-copy p{color:var(--muted);font-size:15px;line-height:1.85}
+    .story-note{margin-top:22px;padding:20px 22px;border-left:4px solid var(--orange);background:#fffdf8;border-radius:0 16px 16px 0;font:600 17px/1.5 "Space Grotesk",sans-serif}
+    .story-points{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .story-point{border:1px solid var(--line);border-radius:18px;padding:22px;background:rgba(255,255,255,.48);min-height:145px}
+    .story-point .story-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:var(--lime);margin-bottom:16px;font-size:18px}
+    .story-point:nth-child(2) .story-icon{background:#dce1ff}.story-point:nth-child(3) .story-icon{background:#ffd9ca}.story-point:nth-child(4) .story-icon{background:#e9e8e1}
+    .story-point h3{font-size:18px;margin-bottom:7px;letter-spacing:-.5px}.story-point p{font-size:12px;color:var(--muted);margin:0}
+    @media(max-width:680px){.story-grid{grid-template-columns:1fr;gap:28px}.story-points{gap:10px}.story-point{padding:17px;min-height:135px}}
+
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="wrap nav">
       <a class="brand" href="#home" aria-label="AmplifyX Media home">
-        <img class="brand-logo" src="amplifyx-icon.png" alt="AmplifyX Media logo icon">
+        <img class="brand-logo" src="amplifyx-icon.png" alt="AmplifyX Media logo">
+        <span class="brand-copy"><span class="brand-name">AmplifyX Media</span><span class="brand-tagline">CREATE · AMPLIFY · GROW</span></span>
       </a>
       <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
       <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-                <a href="#services">Services</a><a href="#capabilities">What we do</a><a href="about.html">Our Story</a><a href="https://drive.google.com/drive/folders/1OF2xfllF0KC3uvqVZ3eaja15-YM9sURJ" target="_blank" rel="noopener noreferrer">Our work ↗</a><a href="#process">Process</a>
+        <a href="#services">Services</a><a href="#capabilities">What we do</a><a href="#our-story">Our Story</a><a href="https://drive.google.com/drive/folders/1OF2xfllF0KC3uvqVZ3eaja15-YM9sURJ" target="_blank" rel="noopener noreferrer">Our work ↗</a><a href="#process">Process</a>
         <a class="nav-cta" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
@@ -211,6 +224,26 @@
       </div>
     </section>
 
+
+    <section id="our-story">
+      <div class="wrap story-grid">
+        <div class="story-copy reveal">
+          <div class="section-kicker">03 / Our story</div>
+          <h2>Good stories deserve to be seen.</h2>
+          <p>AmplifyX Media was built around a simple idea: brands should be able to create meaningful video content without the complexity of managing every production detail themselves.</p>
+          <p>We bring the moving parts together—from shaping an idea and writing the script to coordinating shoots, creators, editing and final delivery. Our focus is on making the process clear, collaborative and ready for the platforms where people discover brands today.</p>
+          <p>Whether you're introducing a product, telling your brand story or building a consistent library of social-first videos, we work with you to turn your brief into content made to connect.</p>
+          <div class="story-note">CREATE · AMPLIFY · GROW</div>
+        </div>
+        <div class="story-points reveal" aria-label="How AmplifyX Media works">
+          <article class="story-point"><div class="story-icon">✳</div><h3>Ideas with purpose</h3><p>Start with your goals, audience and the message you want to share.</p></article>
+          <article class="story-point"><div class="story-icon">🎥</div><h3>Production, connected</h3><p>Coordinate scripting, shoots, creators and editing in one workflow.</p></article>
+          <article class="story-point"><div class="story-icon">✂</div><h3>Made for social</h3><p>Get polished, vertical-first videos prepared for your channels.</p></article>
+          <article class="story-point"><div class="story-icon">↗</div><h3>Built together</h3><p>A collaborative process shaped around your brief and brand.</p></article>
+        </div>
+      </div>
+    </section>
+
     <section class="process" id="process">
       <div class="wrap">
         <div class="section-head reveal"><div><div class="section-kicker">04 / A simple process</div><h2>Clear plan. Smooth shoot.<br>Strong finish.</h2></div><p>Great work happens when everyone knows what we're making, why we're making it and what happens next.</p></div>
@@ -242,9 +275,9 @@
   <footer>
     <div class="wrap">
       <div class="footer-top">
-        <a class="brand" href="#home" aria-label="AmplifyX Media home"><img class="brand-logo" src="amplifyx-icon.png" alt="AmplifyX Media logo icon"></a>
+        <a class="brand" href="#home" aria-label="AmplifyX Media home"><img class="brand-logo" src="amplifyx-icon.png" alt="AmplifyX Media logo"><span class="brand-copy"><span class="brand-name">AmplifyX Media</span><span class="brand-tagline">CREATE · AMPLIFY · GROW</span></span></a>
         <p class="footer-note">Reel-format videos, made end to end. Reel-format video production, from the first idea to the final edit.</p>
-        <div class="footer-links"><a href="#services">Services</a><a href="https://drive.google.com/drive/folders/1OF2xfllF0KC3uvqVZ3eaja15-YM9sURJ" target="_blank" rel="noopener noreferrer">Explore our work ↗</a><a href="#contact">Contact</a><a href="tel:+918792933877">Call: +91 87929 33877</a><a href="https://www.instagram.com/amplify_x_media?obrf=MTltZWs5bHZkbXVtbQ==" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div>
+        <div class="footer-links"><a href="#services">Services</a><a href="#our-story">Our Story</a><a href="https://drive.google.com/drive/folders/1OF2xfllF0KC3uvqVZ3eaja15-YM9sURJ" target="_blank" rel="noopener noreferrer">Explore our work ↗</a><a href="#contact">Contact</a><a href="tel:+918792933877">Call: +91 87929 33877</a><a href="https://www.instagram.com/amplify_x_media?obrf=MTltZWs5bHZkbXVtbQ==" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div>
       </div>
       <div class="footer-bottom"><span>© <span id="year"></span> AmplifyX Media. All rights reserved.</span><span>Reel-format videos, made end to end.</span></div>
     </div>
