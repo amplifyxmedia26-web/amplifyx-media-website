@@ -28,6 +28,34 @@ footer{border-top:1px solid var(--line);background:white;padding:22px 5%;color:v
 label{display:block;font-size:12px;font-weight:750;margin:15px 0 7px}input{width:100%;padding:13px;border:1px solid #dfe2e8;border-radius:10px;font-size:14px;background:white}input:focus{outline:3px solid #c8f16955;border-color:#8aa92b}.panel button[type=submit]{width:100%;margin-top:20px}.form-message{margin-top:14px;font-size:13px;line-height:1.5}.switch{color:#5d7612;text-decoration:underline;cursor:pointer}
 @media(max-width:850px){.hero{grid-template-columns:1fr;gap:10px}.hero-copy{max-width:700px}.visual{min-height:320px}.creator-card{max-width:410px}.hero-wrap{padding-top:38px}.section-head{align-items:start;flex-direction:column}.section-head p{max-width:560px}}
 @media(max-width:650px){header{height:66px;padding:0 4%}.brand-logo{width:44px;height:44px}.brand-text strong{font-size:17px}.brand-text small{font-size:8px;letter-spacing:1.2px}.nav{gap:6px}.nav .btn{padding:10px 11px;font-size:11px}.hero-wrap{padding:32px 5% 26px}.hero{min-height:0;gap:5px}h1{font-size:clamp(37px,10vw,50px);letter-spacing:-1.8px;margin:18px 0 13px}.hero p{font-size:14px}.hero-actions .btn{width:100%}.visual{min-height:295px}.visual-glow{width:245px;height:245px;right:5%;top:10%}.creator-card{padding:18px;border-radius:20px}.creator-row{margin:19px 0 15px}.stat{padding:11px 8px}.stat strong{font-size:15px}.mini-tag{right:-4px;bottom:22px}.trust-strip{padding:16px 5%;justify-content:flex-start}.trust-item{width:calc(50% - 8px)}.section{padding:40px 5% 14px}.section h2{font-size:28px}.features{grid-template-columns:1fr}.feature{min-height:0;padding:20px}.feature-icon{margin-bottom:15px}.join-wrap{padding:25px 5% 42px}.join{align-items:flex-start;flex-direction:column;padding:24px 21px}.join .btn{width:100%}footer{padding:20px 5%;flex-direction:column}}
+
+.dashboard-wrap{display:none;max-width:1180px;margin:0 auto;padding:34px 5% 60px}
+.dashboard-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.dashboard-top h1{font-size:clamp(30px,4vw,44px);letter-spacing:-1.8px;margin:8px 0}
+.dashboard-top p{margin:0;color:var(--muted);font-size:14px}
+.dashboard-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:18px}
+.dash-panel{background:white;border:1px solid var(--line);border-radius:18px;padding:23px;box-shadow:0 5px 18px #17192304;min-width:0}
+.dash-panel h2{font-size:19px;letter-spacing:-.5px;margin:0 0 7px}
+.dash-panel .hint{font-size:12px;line-height:1.55;color:var(--muted);margin:0 0 17px}
+.dash-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.dash-field.full{grid-column:1/-1}
+.dash-field label{margin-top:12px}
+.dash-field input,.dash-field select,.dash-field textarea{width:100%;padding:12px;border:1px solid #dfe2e8;border-radius:10px;font:inherit;font-size:13px;background:white;color:var(--ink)}
+.dash-field textarea{min-height:90px;resize:vertical}
+.dash-field input:focus,.dash-field select:focus,.dash-field textarea:focus{outline:3px solid #c8f16955;border-color:#8aa92b}
+.dash-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.dash-message{font-size:12px;line-height:1.5;margin-top:12px;min-height:18px}
+.profile-photo-row{display:flex;align-items:center;gap:14px;margin:12px 0 18px}
+.profile-photo{width:76px;height:76px;border-radius:20px;object-fit:cover;background:#eef1e8;display:grid;place-items:center;font-size:25px;border:1px solid var(--line);overflow:hidden;flex-shrink:0}
+.profile-photo img{width:100%;height:100%;object-fit:cover}
+.profile-summary{border-radius:15px;background:#f7f8fa;border:1px solid #edf0f2;padding:16px;margin-top:14px}
+.profile-summary strong{display:block;font-size:16px}
+.profile-summary span{font-size:12px;color:var(--muted);display:block;margin-top:5px;overflow-wrap:anywhere}
+.rate-input-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.dashboard-status{display:inline-flex;align-items:center;gap:7px;border-radius:30px;padding:8px 11px;background:#edf7dc;color:#4f7013;font-size:11px;font-weight:800}
+@media(max-width:800px){.dashboard-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.dashboard-wrap{padding:25px 5% 42px}.dash-panel{padding:18px}.dash-form-grid,.rate-input-row{grid-template-columns:1fr}.dash-field.full{grid-column:auto}.dashboard-top .btn{width:100%}}
+
 </style>
 </head>
 <body>
@@ -70,6 +98,73 @@ label{display:block;font-size:12px;font-weight:750;margin:15px 0 7px}input{width
 </section>
 <div class="join-wrap"><section class="join"><div class="join-copy"><h2>Ready to show brands what you bring?</h2><p>Create your profile, organise your creator details and prepare a rate card you can share when opportunities come along.</p></div><button class="btn" type="button" onclick="openModal('register')">Join the Creator Hub ↗</button></section></div>
 </main>
+
+<section class="dashboard-wrap" id="creatorDashboard" aria-live="polite">
+  <div class="dashboard-top">
+    <div>
+      <div class="section-kicker">CREATOR WORKSPACE</div>
+      <h1>Welcome, <span id="dashWelcomeName">Creator</span>.</h1>
+      <p>Complete your profile so AmplifyX can understand your creator services.</p>
+    </div>
+    <div style="display:flex;gap:9px;flex-wrap:wrap">
+      <span class="dashboard-status">● Account active</span>
+      <button class="btn btn-dark" type="button" id="logoutButton">Log out</button>
+    </div>
+  </div>
+  <div class="dashboard-grid">
+    <section class="dash-panel">
+      <h2>Your creator profile</h2>
+      <p class="hint">Add accurate details and social links. Your information is saved to your signed-in account.</p>
+      <form id="creatorProfileForm">
+        <div class="profile-photo-row">
+          <div class="profile-photo" id="profilePhotoPreview">✦</div>
+          <div style="min-width:0;flex:1">
+            <label for="profilePhoto">Profile photo</label>
+            <input id="profilePhoto" type="file" accept="image/png,image/jpeg,image/webp" style="padding:9px;font-size:12px">
+            <div class="hint" style="margin:6px 0 0">JPG, PNG or WebP. Use a clear photo of yourself.</div>
+          </div>
+        </div>
+        <div class="dash-form-grid">
+          <div class="dash-field"><label for="profileFullName">Full name</label><input id="profileFullName" required maxlength="100"></div>
+          <div class="dash-field"><label for="profilePhone">Mobile number</label><input id="profilePhone" type="tel" maxlength="30"></div>
+          <div class="dash-field"><label for="profileCity">City</label><input id="profileCity" placeholder="e.g. Bengaluru" maxlength="80"></div>
+          <div class="dash-field"><label for="profileInstagram">Instagram profile URL</label><input id="profileInstagram" type="url" placeholder="https://instagram.com/yourhandle"></div>
+          <div class="dash-field"><label for="profileYoutube">YouTube channel URL</label><input id="profileYoutube" type="url" placeholder="https://youtube.com/@yourchannel"></div>
+          <div class="dash-field"><label for="profileOtherSocial">Other social profile URL</label><input id="profileOtherSocial" type="url" placeholder="Optional"></div>
+          <div class="dash-field"><label for="profileNiche">Primary creator category</label>
+            <select id="profileNiche"><option value="">Select a category</option><option>Beauty</option><option>Fashion</option><option>Lifestyle</option><option>Food</option><option>Travel</option><option>Fitness</option><option>Technology</option><option>Parenting</option><option>Home & Interiors</option><option>Comedy & Entertainment</option><option>Education</option><option>Other</option></select>
+          </div>
+          <div class="dash-field"><label for="profileLanguage">Content language(s)</label><input id="profileLanguage" placeholder="e.g. Kannada, English"></div>
+          <div class="dash-field"><label for="profileInstagramFollowers">Instagram followers</label><input id="profileInstagramFollowers" type="number" min="0" step="1" placeholder="0"></div>
+          <div class="dash-field"><label for="profileAverageViews">Average views per video</label><input id="profileAverageViews" type="number" min="0" step="1" placeholder="0"></div>
+          <div class="dash-field full"><label for="profileBio">Short creator bio</label><textarea id="profileBio" maxlength="600" placeholder="Tell brands about your content, audience and style."></textarea></div>
+        </div>
+        <div class="dash-actions"><button class="btn btn-orange" type="submit" id="saveProfileButton">Save profile</button></div>
+        <div class="dash-message" id="profileMessage" role="status"></div>
+      </form>
+    </section>
+    <aside>
+      <section class="dash-panel">
+        <h2>Your rate card</h2>
+        <p class="hint">Add starting rates in INR. These are your own prices and can be changed whenever you need.</p>
+        <form id="creatorRatesForm">
+          <div class="dash-field"><label for="rateInstagramReel">Instagram Reel (₹)</label><input id="rateInstagramReel" type="number" min="0" step="1" placeholder="e.g. 2500"></div>
+          <div class="dash-field"><label for="rateStory">Instagram Story (₹)</label><input id="rateStory" type="number" min="0" step="1" placeholder="e.g. 500"></div>
+          <div class="dash-field"><label for="rateYoutubeVideo">YouTube video (₹)</label><input id="rateYoutubeVideo" type="number" min="0" step="1" placeholder="e.g. 5000"></div>
+          <div class="dash-field"><label for="rateUgcVideo">UGC video (₹)</label><input id="rateUgcVideo" type="number" min="0" step="1" placeholder="e.g. 2000"></div>
+          <div class="dash-actions"><button class="btn btn-dark" type="submit" id="saveRatesButton">Save rates</button></div>
+          <div class="dash-message" id="ratesMessage" role="status"></div>
+        </form>
+        <div class="profile-summary"><strong id="summaryName">Your name</strong><span id="summaryCategory">Add your creator category</span><span id="summaryLocation">Add your city</span><span id="summaryInstagram">Instagram followers: not added</span></div>
+      </section>
+      <section class="dash-panel" style="margin-top:18px">
+        <h2>What’s next?</h2>
+        <p class="hint" style="margin-bottom:0">Keep your information current. Before sharing your rates with a brand, confirm the deliverables, usage rights, posting requirements and timeline for each campaign.</p>
+      </section>
+    </aside>
+  </div>
+</section>
+
 <footer><span>© <span id="year"></span> AmplifyX Media</span><span>Creator Hub · Create · Amplify · Grow</span></footer>
 <div class="modal" id="register" role="dialog" aria-modal="true" aria-labelledby="registerTitle"><div class="panel">
 <button class="close" type="button" onclick="closeModals()" aria-label="Close">&times;</button><h2 id="registerTitle">Join the Creator Hub</h2><p>Create your account and start immediately. Use an email address you can access to keep your account secure.</p>
@@ -125,7 +220,9 @@ registerForm.addEventListener('submit', async event => {
     if (error) throw error;
     if (data.session) {
       registerMessage.style.color = '#287a35';
-      registerMessage.textContent = 'Account created successfully! You are signed in and your creator profile record has been created. You can start using Creator Hub now.';
+      registerMessage.textContent = 'Account created successfully! Opening your Creator Hub…';
+      closeModals();
+      await showCreatorDashboard(data.user);
     } else {
       registerMessage.style.color = '#287a35';
       registerMessage.textContent = 'Your account request was received, but instant activation is not enabled in Supabase yet. The site administrator must turn off Confirm email in Supabase Authentication settings, then try again.';
@@ -151,8 +248,10 @@ loginForm.addEventListener('submit', async event => {
     const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
     if (error) throw error;
     loginMessage.style.color = '#287a35';
-    loginMessage.textContent = 'Login successful. You are signed in. Your Creator Hub account is ready.';
+    loginMessage.textContent = 'Login successful. Opening your Creator Hub…';
     loginForm.reset();
+    closeModals();
+    await showCreatorDashboard(data.user);
   } catch (error) {
     loginMessage.style.color = '#b42318';
     loginMessage.textContent = error.message || 'Could not log in. Please check your details and email verification.';
@@ -160,6 +259,189 @@ loginForm.addEventListener('submit', async event => {
     submitButton.disabled = false;
   }
 });
+
+const landingMain = document.querySelector('main');
+const dashboard = document.getElementById('creatorDashboard');
+const profileForm = document.getElementById('creatorProfileForm');
+const ratesForm = document.getElementById('creatorRatesForm');
+const profileMessage = document.getElementById('profileMessage');
+const ratesMessage = document.getElementById('ratesMessage');
+let activeCreatorUser = null;
+let profilePhotoUrl = '';
+
+function setMessage(element, message, ok=true) {
+  element.style.color = ok ? '#287a35' : '#b42318';
+  element.textContent = message;
+}
+function setInputValue(id, value) {
+  const element = document.getElementById(id);
+  if (element) element.value = value ?? '';
+}
+function safeImagePreview(url) {
+  const preview = document.getElementById('profilePhotoPreview');
+  preview.replaceChildren();
+  if (url) {
+    const img = document.createElement('img');
+    img.src = url;
+    img.alt = 'Creator profile photo';
+    preview.appendChild(img);
+  } else {
+    preview.textContent = '✦';
+  }
+}
+function renderCreatorSummary(meta) {
+  const fullName = meta.full_name || 'Creator';
+  document.getElementById('dashWelcomeName').textContent = fullName.split(' ')[0];
+  document.getElementById('summaryName').textContent = fullName;
+  document.getElementById('summaryCategory').textContent = meta.creator_niche || 'Add your creator category';
+  document.getElementById('summaryLocation').textContent = meta.creator_city || 'Add your city';
+  document.getElementById('summaryInstagram').textContent = 'Instagram followers: ' + (Number(meta.instagram_followers || 0).toLocaleString('en-IN'));
+}
+function fillDashboard(user) {
+  const meta = user.user_metadata || {};
+  setInputValue('profileFullName', meta.full_name || '');
+  setInputValue('profilePhone', meta.contact_phone || '');
+  setInputValue('profileCity', meta.creator_city || '');
+  setInputValue('profileInstagram', meta.instagram_url || '');
+  setInputValue('profileYoutube', meta.youtube_url || '');
+  setInputValue('profileOtherSocial', meta.other_social_url || '');
+  setInputValue('profileNiche', meta.creator_niche || '');
+  setInputValue('profileLanguage', meta.content_languages || '');
+  setInputValue('profileInstagramFollowers', meta.instagram_followers ?? '');
+  setInputValue('profileAverageViews', meta.average_video_views ?? '');
+  setInputValue('profileBio', meta.creator_bio || '');
+  const rates = meta.creator_rates || {};
+  setInputValue('rateInstagramReel', rates.instagram_reel ?? '');
+  setInputValue('rateStory', rates.instagram_story ?? '');
+  setInputValue('rateYoutubeVideo', rates.youtube_video ?? '');
+  setInputValue('rateUgcVideo', rates.ugc_video ?? '');
+  profilePhotoUrl = meta.profile_photo_url || '';
+  safeImagePreview(profilePhotoUrl);
+  renderCreatorSummary(meta);
+}
+async function showCreatorDashboard(user) {
+  if (!user) return;
+  activeCreatorUser = user;
+  fillDashboard(user);
+  if (landingMain) landingMain.style.display = 'none';
+  dashboard.style.display = 'block';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function hideCreatorDashboard() {
+  activeCreatorUser = null;
+  dashboard.style.display = 'none';
+  if (landingMain) landingMain.style.display = '';
+}
+profileForm.addEventListener('submit', async event => {
+  event.preventDefault();
+  if (!activeCreatorUser) return setMessage(profileMessage, 'Please log in again to save your profile.', false);
+  const button = document.getElementById('saveProfileButton');
+  button.disabled = true;
+  setMessage(profileMessage, 'Saving your profile…');
+  try {
+    const meta = {
+      ...(activeCreatorUser.user_metadata || {}),
+      full_name: document.getElementById('profileFullName').value.trim(),
+      contact_phone: document.getElementById('profilePhone').value.trim(),
+      creator_city: document.getElementById('profileCity').value.trim(),
+      instagram_url: document.getElementById('profileInstagram').value.trim(),
+      youtube_url: document.getElementById('profileYoutube').value.trim(),
+      other_social_url: document.getElementById('profileOtherSocial').value.trim(),
+      creator_niche: document.getElementById('profileNiche').value,
+      content_languages: document.getElementById('profileLanguage').value.trim(),
+      instagram_followers: document.getElementById('profileInstagramFollowers').value === '' ? null : Number(document.getElementById('profileInstagramFollowers').value),
+      average_video_views: document.getElementById('profileAverageViews').value === '' ? null : Number(document.getElementById('profileAverageViews').value),
+      creator_bio: document.getElementById('profileBio').value.trim(),
+      profile_photo_url: profilePhotoUrl
+    };
+    const { data, error } = await supabaseClient.auth.updateUser({ data: meta });
+    if (error) throw error;
+    activeCreatorUser = data.user;
+    fillDashboard(data.user);
+    setMessage(profileMessage, 'Profile saved successfully.');
+  } catch (error) {
+    setMessage(profileMessage, error.message || 'Could not save profile. Please try again.', false);
+  } finally {
+    button.disabled = false;
+  }
+});
+ratesForm.addEventListener('submit', async event => {
+  event.preventDefault();
+  if (!activeCreatorUser) return setMessage(ratesMessage, 'Please log in again to save your rates.', false);
+  const button = document.getElementById('saveRatesButton');
+  button.disabled = true;
+  setMessage(ratesMessage, 'Saving your rates…');
+  try {
+    const previousMeta = activeCreatorUser.user_metadata || {};
+    const rates = {
+      instagram_reel: document.getElementById('rateInstagramReel').value === '' ? null : Number(document.getElementById('rateInstagramReel').value),
+      instagram_story: document.getElementById('rateStory').value === '' ? null : Number(document.getElementById('rateStory').value),
+      youtube_video: document.getElementById('rateYoutubeVideo').value === '' ? null : Number(document.getElementById('rateYoutubeVideo').value),
+      ugc_video: document.getElementById('rateUgcVideo').value === '' ? null : Number(document.getElementById('rateUgcVideo').value)
+    };
+    const { data, error } = await supabaseClient.auth.updateUser({ data: { ...previousMeta, creator_rates: rates } });
+    if (error) throw error;
+    activeCreatorUser = data.user;
+    fillDashboard(data.user);
+    setMessage(ratesMessage, 'Your rates have been saved.');
+  } catch (error) {
+    setMessage(ratesMessage, error.message || 'Could not save rates. Please try again.', false);
+  } finally {
+    button.disabled = false;
+  }
+});
+document.getElementById('profilePhoto').addEventListener('change', async event => {
+  const file = event.target.files && event.target.files[0];
+  if (!file) return;
+  if (!activeCreatorUser) return setMessage(profileMessage, 'Please log in before uploading a photo.', false);
+  if (!['image/jpeg','image/png','image/webp'].includes(file.type)) {
+    event.target.value = '';
+    return setMessage(profileMessage, 'Please choose a JPG, PNG or WebP image.', false);
+  }
+  if (file.size > 5 * 1024 * 1024) {
+    event.target.value = '';
+    return setMessage(profileMessage, 'Please choose an image smaller than 5 MB.', false);
+  }
+  setMessage(profileMessage, 'Uploading your photo…');
+  try {
+    const extension = file.type === 'image/png' ? 'png' : file.type === 'image/webp' ? 'webp' : 'jpg';
+    const objectPath = `${activeCreatorUser.id}/profile-${Date.now()}.${extension}`;
+    const { error: uploadError } = await supabaseClient.storage.from('creator-photos').upload(objectPath, file, { upsert: true, contentType: file.type });
+    if (uploadError) throw uploadError;
+    const { data: signedData, error: signedError } = await supabaseClient.storage.from('creator-photos').createSignedUrl(objectPath, 60 * 60 * 24 * 365);
+    if (signedError) throw signedError;
+    profilePhotoUrl = signedData.signedUrl;
+    safeImagePreview(profilePhotoUrl);
+    setMessage(profileMessage, 'Photo uploaded. Click “Save profile” to save your profile details.');
+  } catch (error) {
+    setMessage(profileMessage, error.message || 'Photo upload failed. Check your storage bucket and policies.', false);
+  }
+});
+document.getElementById('logoutButton').addEventListener('click', async () => {
+  const button = document.getElementById('logoutButton');
+  button.disabled = true;
+  try {
+    const { error } = await supabaseClient.auth.signOut();
+    if (error) throw error;
+    hideCreatorDashboard();
+    openModal('login');
+    setMessage(loginMessage, 'You have logged out successfully.');
+  } catch (error) {
+    alert(error.message || 'Could not log out. Please try again.');
+  } finally {
+    button.disabled = false;
+  }
+});
+supabaseClient.auth.getSession().then(async ({ data, error }) => {
+  if (!error && data.session && data.session.user) await showCreatorDashboard(data.session.user);
+});
+supabaseClient.auth.onAuthStateChange((event, session) => {
+  if (event === 'SIGNED_IN' && session && session.user) {
+    // The login handler opens the dashboard after its own success message.
+  }
+  if (event === 'SIGNED_OUT') hideCreatorDashboard();
+});
+
 </script>
 </body>
 </html>
