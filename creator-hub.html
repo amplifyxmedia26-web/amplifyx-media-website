@@ -46,7 +46,7 @@ label{display:block;font-size:12px;font-weight:750;margin:15px 0 7px}input{width
 <h1>Make your influence <span>work for you.</span></h1>
 <p>Your creator profile, collaboration rate estimates and shareable rate card — organised in one simple place.</p>
 <div class="hero-actions"><button class="btn btn-orange" type="button" onclick="openModal('register')">Create your creator profile <span>↗</span></button><button class="btn" type="button" onclick="openModal('login')">Log in</button></div>
-<div class="hero-note"><b>✓</b> Free to get started <span>·</span> Email verification for secure access</div>
+<div class="hero-note"><b>✓</b> Free to get started <span>·</span> Instant account activation</div>
 </div>
 <div class="visual" aria-label="Illustrative creator profile preview">
 <div class="visual-glow"></div>
@@ -72,7 +72,7 @@ label{display:block;font-size:12px;font-weight:750;margin:15px 0 7px}input{width
 </main>
 <footer><span>© <span id="year"></span> AmplifyX Media</span><span>Creator Hub · Create · Amplify · Grow</span></footer>
 <div class="modal" id="register" role="dialog" aria-modal="true" aria-labelledby="registerTitle"><div class="panel">
-<button class="close" type="button" onclick="closeModals()" aria-label="Close">&times;</button><h2 id="registerTitle">Join the Creator Hub</h2><p>Start your creator profile. Registration will be enabled after the secure Supabase connection is added.</p>
+<button class="close" type="button" onclick="closeModals()" aria-label="Close">&times;</button><h2 id="registerTitle">Join the Creator Hub</h2><p>Create your account and start immediately. Use an email address you can access to keep your account secure.</p>
 <form id="registerForm">
 <label for="regName">Full name</label><input id="regName" name="full_name" autocomplete="name" required>
 <label for="regEmail">Email address</label><input id="regEmail" name="email" type="email" autocomplete="email" required>
@@ -125,10 +125,10 @@ registerForm.addEventListener('submit', async event => {
     if (error) throw error;
     if (data.session) {
       registerMessage.style.color = '#287a35';
-      registerMessage.textContent = 'Your account was created and you are signed in. Your profile record has been created. The creator dashboard is the next setup step.';
+      registerMessage.textContent = 'Account created successfully! You are signed in and your creator profile record has been created. You can start using Creator Hub now.';
     } else {
       registerMessage.style.color = '#287a35';
-      registerMessage.textContent = 'Registration submitted! Check your email and click the verification link before logging in. If you do not see it, check your spam folder.';
+      registerMessage.textContent = 'Your account request was received, but instant activation is not enabled in Supabase yet. The site administrator must turn off Confirm email in Supabase Authentication settings, then try again.';
     }
     registerForm.reset();
   } catch (error) {
@@ -151,7 +151,7 @@ loginForm.addEventListener('submit', async event => {
     const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
     if (error) throw error;
     loginMessage.style.color = '#287a35';
-    loginMessage.textContent = 'Login successful. You are signed in. The creator dashboard is the next setup step.';
+    loginMessage.textContent = 'Login successful. You are signed in. Your Creator Hub account is ready.';
     loginForm.reset();
   } catch (error) {
     loginMessage.style.color = '#b42318';
