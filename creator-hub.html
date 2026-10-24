@@ -111,6 +111,17 @@ label{display:block;font-size:12px;font-weight:750;margin:15px 0 7px}input{width
       <button class="btn btn-dark" type="button" id="logoutButton">Log out</button>
     </div>
   </div>
+  <section class="dash-panel" id="rateCardView" style="display:none;margin-bottom:18px">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div><div class="section-kicker">AMPLIFYX MEDIA · CREATOR RATE CARD</div><h2 style="font-size:25px;margin:8px 0" id="cardCreatorName">Creator</h2><p class="hint" id="cardCreatorMeta" style="margin:0">Creator profile</p></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-orange" type="button" id="downloadRateCard">Download PDF</button><button class="btn btn-dark" type="button" id="editCreatorDetails">Edit Profile / Rates</button></div>
+    </div>
+    <div class="dashboard-grid" style="margin-top:18px">
+      <div class="profile-summary"><strong>Creator overview</strong><span id="cardBio">Creator bio</span><span id="cardSocials"></span><span id="cardAudience"></span></div>
+      <div class="profile-summary"><strong>Services & rates</strong><div id="cardRatesList" style="margin-top:10px"></div></div>
+    </div>
+    <p class="hint" style="margin:14px 0 0">Rates are indicative and may be confirmed based on campaign scope, usage rights and deliverables.</p>
+  </section>
   <div class="dashboard-grid">
     <section class="dash-panel">
       <h2>Your creator profile</h2>
@@ -182,6 +193,7 @@ label{display:block;font-size:12px;font-weight:750;margin:15px 0 7px}input{width
 <p>New here? <span class="switch" onclick="openModal('register')">Create an account</span></p>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 function openModal(id){closeModals();document.getElementById(id).classList.add('open');document.body.style.overflow='hidden'}
@@ -319,12 +331,36 @@ function fillDashboard(user) {
   safeImagePreview(profilePhotoUrl);
   renderCreatorSummary(meta);
 }
+function profileIsComplete(user) {
+  const m = user.user_metadata || {};
+  const r = m.creator_rates || {};
+  return Boolean(m.full_name && m.creator_city && m.creator_niche && m.content_languages &&
+    (m.instagram_url || m.youtube_url || m.other_social_url) &&
+    [r.instagram_reel, r.instagram_story, r.youtube_video, r.ugc_video].some(v => v !== null && v !== undefined && v !== ''));
+}
+function renderRateCard(user) {
+  const m = user.user_metadata || {};
+  const rates = m.creator_rates || {};
+  document.getElementById('cardCreatorName').textContent = m.full_name || 'Creator';
+  document.getElementById('cardCreatorMeta').textContent = [m.creator_niche, m.creator_city, m.content_languages].filter(Boolean).join(' · ');
+  document.getElementById('cardBio').textContent = m.creator_bio || 'Creator and content collaborator.';
+  document.getElementById('cardSocials').textContent = [m.instagram_url, m.youtube_url, m.other_social_url].filter(Boolean).join(' | ') || 'Social links not added';
+  document.getElementById('cardAudience').textContent = `Instagram followers: ${Number(m.instagram_followers || 0).toLocaleString('en-IN')} · Average video views: ${Number(m.average_video_views || 0).toLocaleString('en-IN')}`;
+  const entries = [['Instagram Reel', rates.instagram_reel], ['Instagram Story', rates.instagram_story], ['YouTube video', rates.youtube_video], ['UGC video', rates.ugc_video]].filter(([label, value]) => value !== null && value !== undefined && value !== '');
+  const list = document.getElementById('cardRatesList'); list.replaceChildren();
+  if (!entries.length) { list.textContent = 'No rates added yet.'; }
+  entries.forEach(([label, value]) => { const row = document.createElement('div'); row.style.cssText='display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #e7e9ed;font-size:13px'; const a=document.createElement('span');a.textContent=label;const b=document.createElement('strong');b.textContent='₹'+Number(value).toLocaleString('en-IN');row.append(a,b);list.appendChild(row); });
+}
 async function showCreatorDashboard(user) {
   if (!user) return;
   activeCreatorUser = user;
   fillDashboard(user);
   if (landingMain) landingMain.style.display = 'none';
   dashboard.style.display = 'block';
+  const complete = profileIsComplete(user);
+  document.getElementById('rateCardView').style.display = complete ? 'block' : 'none';
+  document.querySelector('.dashboard-grid:not(#rateCardView .dashboard-grid)').style.display = complete ? 'none' : 'grid';
+  if (complete) renderRateCard(user);
   window.scrollTo({top:0, behavior:'smooth'});
 }
 function hideCreatorDashboard() {
@@ -359,6 +395,7 @@ profileForm.addEventListener('submit', async event => {
     activeCreatorUser = data.user;
     fillDashboard(data.user);
     setMessage(profileMessage, 'Profile saved successfully.');
+    await showCreatorDashboard(data.user);
   } catch (error) {
     setMessage(profileMessage, error.message || 'Could not save profile. Please try again.', false);
   } finally {
@@ -384,6 +421,7 @@ ratesForm.addEventListener('submit', async event => {
     activeCreatorUser = data.user;
     fillDashboard(data.user);
     setMessage(ratesMessage, 'Your rates have been saved.');
+    await showCreatorDashboard(data.user);
   } catch (error) {
     setMessage(ratesMessage, error.message || 'Could not save rates. Please try again.', false);
   } finally {
@@ -431,6 +469,36 @@ document.getElementById('logoutButton').addEventListener('click', async () => {
   } finally {
     button.disabled = false;
   }
+});
+document.getElementById('editCreatorDetails').addEventListener('click', () => {
+  document.getElementById('rateCardView').style.display = 'none';
+  document.querySelector('.dashboard-grid:not(#rateCardView .dashboard-grid)').style.display = 'grid';
+  document.getElementById('creatorProfileForm').scrollIntoView({behavior:'smooth', block:'start'});
+});
+document.getElementById('downloadRateCard').addEventListener('click', () => {
+  if (!activeCreatorUser) return;
+  if (!window.jspdf || !window.jspdf.jsPDF) { alert('PDF generator did not load. Please refresh and try again.'); return; }
+  const m = activeCreatorUser.user_metadata || {}; const rates = m.creator_rates || {};
+  const doc = new window.jspdf.jsPDF({unit:'mm', format:'a4'});
+  const pageW=210, margin=18; let y=22;
+  doc.setFillColor(24,25,27); doc.rect(0,0,pageW,48,'F');
+  doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(10); doc.text('AMPLIFYX MEDIA',margin,15);
+  doc.setFontSize(23); doc.text('CREATOR RATE CARD',margin,y+12);
+  doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.text('CREATE · AMPLIFY · GROW',margin,y+21);
+  y=62; doc.setTextColor(25,25,25); doc.setFont('helvetica','bold'); doc.setFontSize(21); doc.text(String(m.full_name || 'Creator').slice(0,70),margin,y); y+=8;
+  doc.setFont('helvetica','normal'); doc.setFontSize(10);
+  const meta=[m.creator_niche,m.creator_city,m.content_languages].filter(Boolean).join(' · ');
+  if(meta){doc.text(doc.splitTextToSize(meta,174),margin,y);y+=8;}
+  y+=3; doc.setFont('helvetica','bold'); doc.setFontSize(13); doc.text('SERVICES & PRICING',margin,y); y+=8;
+  const entries=[['Instagram Reel',rates.instagram_reel],['Instagram Story',rates.instagram_story],['YouTube video',rates.youtube_video],['UGC video',rates.ugc_video]].filter(([l,v])=>v!==null&&v!==undefined&&v!=='');
+  doc.setFontSize(11); entries.forEach(([label,value])=>{doc.setDrawColor(225,227,230);doc.line(margin,y+3,pageW-margin,y+3);doc.setFont('helvetica','normal');doc.text(label,margin,y);doc.setFont('helvetica','bold');doc.text('INR '+Number(value).toLocaleString('en-IN'),pageW-margin,y,{align:'right'});y+=12;});
+  y+=5; doc.setFont('helvetica','bold');doc.setFontSize(12);doc.text('ABOUT THE CREATOR',margin,y);y+=7;doc.setFont('helvetica','normal');doc.setFontSize(10);
+  const bio=doc.splitTextToSize(String(m.creator_bio || 'Creator and content collaborator.'),174);doc.text(bio,margin,y);y+=bio.length*5+5;
+  const socials=[m.instagram_url,m.youtube_url,m.other_social_url].filter(Boolean).join(' | ');
+  if(socials){const lines=doc.splitTextToSize(socials,174);doc.text(lines,margin,y);y+=lines.length*5+4;}
+  doc.setFontSize(9);doc.setTextColor(100,100,100);doc.text('Audience: Instagram '+Number(m.instagram_followers||0).toLocaleString('en-IN')+' followers · Average video views '+Number(m.average_video_views||0).toLocaleString('en-IN'),margin,Math.min(y,270));
+  doc.setFontSize(8);doc.text('Rates may be confirmed based on campaign scope, usage rights and deliverables.',margin,286);
+  const filename=(String(m.full_name||'creator').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'creator')+'-rate-card.pdf'; doc.save(filename);
 });
 supabaseClient.auth.getSession().then(async ({ data, error }) => {
   if (!error && data.session && data.session.user) await showCreatorDashboard(data.session.user);
