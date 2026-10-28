@@ -324,11 +324,17 @@ function safeImagePreview(url) {
 }
 function renderCreatorSummary(meta) {
   const fullName = meta.full_name || 'Creator';
-  document.getElementById('dashWelcomeName').textContent = fullName.split(' ')[0];
-  document.getElementById('summaryName').textContent = fullName;
-  document.getElementById('summaryCategory').textContent = meta.creator_niche || 'Add your creator category';
-  document.getElementById('summaryLocation').textContent = meta.creator_city || 'Add your city';
-  document.getElementById('summaryInstagram').textContent = 'Instagram followers: ' + (Number(meta.instagram_followers || 0).toLocaleString('en-IN'));
+  // These elements exist in older dashboard layouts; newer layouts may not include them.
+  const welcome = document.getElementById('dashWelcomeName');
+  if (welcome) welcome.textContent = fullName.split(' ')[0];
+  const summaryName = document.getElementById('summaryName');
+  if (summaryName) summaryName.textContent = fullName;
+  const summaryCategory = document.getElementById('summaryCategory');
+  if (summaryCategory) summaryCategory.textContent = meta.creator_niche || 'Add your creator category';
+  const summaryLocation = document.getElementById('summaryLocation');
+  if (summaryLocation) summaryLocation.textContent = meta.creator_city || 'Add your city';
+  const summaryInstagram = document.getElementById('summaryInstagram');
+  if (summaryInstagram) summaryInstagram.textContent = 'Instagram followers: ' + (Number(meta.instagram_followers || 0).toLocaleString('en-IN'));
 }
 function fillDashboard(user) {
   const meta = user.user_metadata || {};
