@@ -33,10 +33,9 @@ main{max-width:1200px;margin:32px auto;padding:0 20px}.eyebrow{font-size:11px;fo
   <div class="login-card">
     <div class="eyebrow">Private workspace</div><h1>Creator Admin</h1>
     <p class="sub">Sign in with the authorized AmplifyX administrator account to view Creator Hub registrations.</p>
-    <div class="notice">Authorized email: <strong>contact@amplifyxmedia.com</strong>. Only this account is permitted to access the creator list.</div>
-    <form id="loginForm">
-      <div class="form-row"><label for="email">Admin email</label><input class="field" id="email" type="email" value="contact@amplifyxmedia.com" autocomplete="username" required></div>
-      <div class="form-row"><label for="password">Password</label><input class="field" id="password" type="password" autocomplete="current-password" required></div>
+    <form id="loginForm" autocomplete="off">
+      <div class="form-row"><label for="email">Admin email</label><input class="field" id="email" name="admin-login-email" type="email" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Enter admin email" required></div>
+      <div class="form-row"><label for="password">Password</label><input class="field" id="password" name="admin-login-password" type="password" autocomplete="off" required></div>
       <button class="btn primary full" type="submit" id="loginBtn">Log in securely</button>
       <p id="loginMessage" class="sub" role="status"></p>
     </form>
