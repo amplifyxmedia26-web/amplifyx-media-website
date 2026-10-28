@@ -213,7 +213,35 @@ header .nav button.btn {
 <div class="modal" id="login" role="dialog" aria-modal="true" aria-labelledby="loginTitle"><div class="panel">
 <button class="close" type="button" onclick="closeModals()" aria-label="Close">&times;</button><h2 id="loginTitle">Welcome back</h2><p>Log in to access your creator profile and rate card.</p>
 <form id="loginForm"><label for="loginEmail">Email address</label><input id="loginEmail" name="email" type="email" autocomplete="email" required><label for="loginPassword">Password</label><input id="loginPassword" name="password" type="password" autocomplete="current-password" required><button class="btn btn-dark" type="submit">Log in</button><div class="form-message" id="loginMessage" aria-live="polite"></div></form>
+<p style="text-align:right;margin:10px 0 0"><span class="switch" id="forgotPasswordLink">Forgot password?</span></p>
 <p>New here? <span class="switch" onclick="openModal('register')">Create an account</span></p>
+</div></div>
+
+<div class="modal" id="forgotPassword" role="dialog" aria-modal="true" aria-labelledby="forgotPasswordTitle"><div class="panel">
+<button class="close" type="button" onclick="closeModals()" aria-label="Close">&times;</button>
+<h2 id="forgotPasswordTitle">Reset your password</h2>
+<p>Enter the email address connected to your Creator Hub account. We'll send a secure reset link if the account is eligible.</p>
+<form id="forgotPasswordForm">
+<label for="forgotEmail">Registered email address</label>
+<input id="forgotEmail" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+<button class="btn btn-dark" type="submit" id="sendResetEmailButton">Send reset link</button>
+<div class="form-message" id="forgotPasswordMessage" aria-live="polite"></div>
+</form>
+<p><span class="switch" onclick="openModal('login')">Back to login</span></p>
+</div></div>
+
+<div class="modal" id="updateCreatorPassword" role="dialog" aria-modal="true" aria-labelledby="updateCreatorPasswordTitle"><div class="panel">
+<button class="close" type="button" onclick="closeModals()" aria-label="Close">&times;</button>
+<h2 id="updateCreatorPasswordTitle">Create a new password</h2>
+<p>Choose a new password for your Creator Hub account.</p>
+<form id="updateCreatorPasswordForm">
+<label for="creatorNewPassword">New password</label>
+<input id="creatorNewPassword" type="password" minlength="8" autocomplete="new-password" required placeholder="At least 8 characters">
+<label for="creatorConfirmPassword">Confirm new password</label>
+<input id="creatorConfirmPassword" type="password" minlength="8" autocomplete="new-password" required placeholder="Enter it again">
+<button class="btn btn-dark" type="submit" id="updateCreatorPasswordButton">Update password</button>
+<div class="form-message" id="updateCreatorPasswordMessage" aria-live="polite"></div>
+</form>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -232,6 +260,95 @@ const registerForm = document.getElementById('registerForm');
 const registerMessage = document.getElementById('registerMessage');
 const loginForm = document.getElementById('loginForm');
 const loginMessage = document.getElementById('loginMessage');
+
+document.getElementById('forgotPasswordLink').addEventListener('click', () => {
+  const currentEmail = document.getElementById('loginEmail').value.trim();
+  document.getElementById('forgotEmail').value = currentEmail;
+  document.getElementById('forgotPasswordMessage').textContent = '';
+  openModal('forgotPassword');
+});
+
+document.getElementById('forgotPasswordForm').addEventListener('submit', async event => {
+  event.preventDefault();
+  const button = document.getElementById('sendResetEmailButton');
+  const message = document.getElementById('forgotPasswordMessage');
+  const email = document.getElementById('forgotEmail').value.trim();
+  button.disabled = true;
+  message.style.color = '#555';
+  message.textContent = 'Sending reset link…';
+  try {
+    const redirectTo = window.location.origin + '/creator-hub.html?reset=1';
+    const { error } = await supabaseClient.auth.resetPasswordForEmail(email, { redirectTo });
+    if (error) throw error;
+    message.style.color = '#287a35';
+    message.textContent = 'If an account exists for that email, a password-reset link will be sent. Please check your inbox and spam folder.';
+  } catch (error) {
+    message.style.color = '#b42318';
+    message.textContent = error.message || 'Could not send the reset email. Please try again later.';
+  } finally {
+    button.disabled = false;
+  }
+});
+
+let creatorRecoverySessionReady = false;
+
+async function showCreatorPasswordResetIfReady() {
+  const { data, error } = await supabaseClient.auth.getSession();
+  if (error) throw error;
+  if (!data.session) {
+    document.getElementById('updateCreatorPasswordMessage').style.color = '#b42318';
+    document.getElementById('updateCreatorPasswordMessage').textContent =
+      'This reset link is missing or expired. Please request a new password-reset email.';
+    openModal('updateCreatorPassword');
+    document.getElementById('updateCreatorPasswordButton').disabled = true;
+    return;
+  }
+  creatorRecoverySessionReady = true;
+  document.getElementById('updateCreatorPasswordButton').disabled = false;
+  document.getElementById('updateCreatorPasswordMessage').textContent = '';
+  openModal('updateCreatorPassword');
+}
+
+document.getElementById('updateCreatorPasswordForm').addEventListener('submit', async event => {
+  event.preventDefault();
+  const button = document.getElementById('updateCreatorPasswordButton');
+  const message = document.getElementById('updateCreatorPasswordMessage');
+  const password = document.getElementById('creatorNewPassword').value;
+  const confirmation = document.getElementById('creatorConfirmPassword').value;
+  if (!creatorRecoverySessionReady) {
+    message.style.color = '#b42318';
+    message.textContent = 'Please request a new reset link and open it from your email.';
+    return;
+  }
+  if (password.length < 8) {
+    message.style.color = '#b42318';
+    message.textContent = 'Your password must contain at least 8 characters.';
+    return;
+  }
+  if (password !== confirmation) {
+    message.style.color = '#b42318';
+    message.textContent = 'The passwords do not match.';
+    return;
+  }
+  button.disabled = true;
+  message.style.color = '#555';
+  message.textContent = 'Updating your password…';
+  try {
+    const { error } = await supabaseClient.auth.updateUser({ password });
+    if (error) throw error;
+    creatorRecoverySessionReady = false;
+    await supabaseClient.auth.signOut();
+    document.getElementById('updateCreatorPasswordForm').reset();
+    closeModals();
+    openModal('login');
+    setMessage(loginMessage, 'Password updated successfully. Please log in with your new password.');
+  } catch (error) {
+    message.style.color = '#b42318';
+    message.textContent = error.message || 'Could not update the password. Please request a new reset link.';
+  } finally {
+    button.disabled = false;
+  }
+});
 
 registerForm.addEventListener('submit', async event => {
   event.preventDefault();
@@ -829,8 +946,31 @@ supabaseClient.auth.onAuthStateChange((event, session) => {
   if (event === 'SIGNED_IN' && session && session.user) {
     // The login handler opens the dashboard after its own success message.
   }
+  if (event === 'PASSWORD_RECOVERY') {
+    creatorRecoverySessionReady = Boolean(session);
+    document.getElementById('updateCreatorPasswordButton').disabled = !creatorRecoverySessionReady;
+    openModal('updateCreatorPassword');
+  }
   if (event === 'SIGNED_OUT') hideCreatorDashboard();
 });
+
+// Also support a valid recovery session restored after the browser reloads.
+if (new URLSearchParams(window.location.search).get('reset') === '1') {
+  supabaseClient.auth.getSession().then(({ data, error }) => {
+    if (error) {
+      document.getElementById('updateCreatorPasswordMessage').style.color = '#b42318';
+      document.getElementById('updateCreatorPasswordMessage').textContent = error.message;
+      openModal('updateCreatorPassword');
+      document.getElementById('updateCreatorPasswordButton').disabled = true;
+      return;
+    }
+    if (data.session && data.session.user) {
+      creatorRecoverySessionReady = true;
+      document.getElementById('updateCreatorPasswordButton').disabled = false;
+      openModal('updateCreatorPassword');
+    }
+  });
+}
 
 </script>
 </body>
